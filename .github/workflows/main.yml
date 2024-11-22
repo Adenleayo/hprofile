@@ -66,7 +66,7 @@ jobs:
         with:
           access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          registry: ${{ secrets.REGISTRY_ }}
+          registry: ${{ secrets.REGISTRY }}
           repo: activeapp
           region: ${{ env.AWS_REGION }}
           tag: latest,${{github.run_number}}
