@@ -102,15 +102,15 @@ jobs:
           id: task-def
           uses: aws-actions/amazon-ecs-render-task-definition@v1
           with:
-            task-definition: ${{env.ECS_TASK_DEFINATION_NAME}}
-            container-name: ${{env.CONTAINER_NAME}}
-            image: ${{ secrets.REGISTRY}}/${{env.ECR_REPO}}:${{github.run_number}}
+            task-definition: ${{ env.ECS_TASK_DEFINATION }}
+            container-name: ${{ env.CONTAINER_NAME }}
+            image: ${{ secrets.REGISTRY }}/${{ env.ECR_REPO }}:${{ github.run_number }}
   
         - name: Deploy Amazon ECS task definition
           uses: aws-actions/amazon-ecs-deploy-task-definition@v2
           with:
             task-definition: ${{ steps.task-def.outputs.task-definition }}
-            service: ${{env.ECS_SERVICE_NAME}}
-            cluster: ${{env.ECS_CLUSTER_NAME}}
+            service: ${{ env.ECS_SERVICE_NAME }}
+            cluster: ${{ env.ECS_CLUSTER_NAME }}
             wait-for-service-stability: true    
     
